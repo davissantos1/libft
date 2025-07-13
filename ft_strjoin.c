@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 14:52:22 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/09 17:36:10 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/07/11 16:32:53 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/12 15:02:35 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	src_size;
+	char	*result;
+	size_t	total_size;
 	size_t	i;
 
-	src_size = ft_strlen(src);
 	i = 0;
-	if (size > 0)
-	{
-		while (src[i] && (i < size - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (src_size);
+	total_size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	result = (char *)malloc(total_size * sizeof(char));
+	if (result == ((void *)0))
+		return ((void *)0);
+	ft_strlcpy(result, s1, total_size);
+	ft_strlcat(result, s2, total_size);
+	return (result);
 }

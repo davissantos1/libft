@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 14:52:22 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/09 17:36:10 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/07/10 11:56:24 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/10 13:29:27 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	src_size;
 	size_t	i;
+	size_t	j;
 
-	src_size = ft_strlen(src);
 	i = 0;
-	if (size > 0)
+	j = 0;
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (big[i] && (i < len))
 	{
-		while (src[i] && (i < size - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		j = 0;
+		while ((i + j < len) && (big[i + j] == little[j]))
+			j++;
+		if (little[j] == '\0')
+			return ((char *)&big[i]);
+		i++;
 	}
-	return (src_size);
+	return ((void *)0);
 }

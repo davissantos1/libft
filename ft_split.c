@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasimoes <dasimoes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 13:36:40 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/09 23:15:07 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/07/12 15:38:05 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/12 15:43:45 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	**ft_split(char const *s, char c)
 {
-	size_t			i;
-	unsigned char	*ptr;
-	unsigned char	uc;
+	char	**split_s;
+	int		i;
 
 	i = 0;
-	ptr = (unsigned char *)s;
-	uc = (unsigned char)c;
-	while (i < n)
+	while (s[i])
 	{
-		ptr[i] = uc;
-		i++;
+		
+	
 	}
-	return (s);
 }

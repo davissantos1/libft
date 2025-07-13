@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 14:52:22 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/09 17:36:10 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/07/10 14:45:20 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/10 18:24:05 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	*calloc(size_t nmemb, size_t size)
 {
-	size_t	src_size;
-	size_t	i;
+	void	*result;
+	size_t	max;
 
-	src_size = ft_strlen(src);
-	i = 0;
-	if (size > 0)
-	{
-		while (src[i] && (i < size - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (src_size);
+	max = (size_t) -1;
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	if (nmemb > max / size)
+		return ((void *)0);
+	result = malloc(nmemb * size);
+	if (result == (void *)0)
+		return ((void *)0);
+	ft_bzero(result, nmemb * size);
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:47:29 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/09 13:32:13 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:23:18 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	strlen(const char *s)
 	size_t	size;
 
 	size = 0;
-	while (str[size])
+	while (s[size])
 		size++;
 	return (size);
 }

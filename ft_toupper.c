@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 11:43:59 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/08 17:08:39 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/07/09 22:14:27 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/10 10:59:35 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
+#include "libft.h"
 
-void	ft_putstr(char *str)
+int	ft_toupper(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }
