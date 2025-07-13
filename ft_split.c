@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:38:05 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 19:57:10 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:57:50 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,18 @@ static size_t	ft_split_size(char const *s, char c)
 	return (count);
 }
 
-static char	*ft_split_aux(char const *s, char c, size_t i, size_t sz)
+static char	*ft_split_aux(char const *s, char c, size_t index)
 {
 	size_t	start;
-	size_t	end;
-	size_t	str;
+	size_t	string;
+	size_t	i;
 
-	start = 0;
-	str = i;
-	while (str)
+	i = 0;
+	string = 0;
+	while (s[i])
 	{
-		if (s[start + 1] && s[start] == c && s[start + 1] != c)
-			str--;
-		start++;
-	}
-	str = i;
-	end = start;
-	while (str)
-	{
-		if ((s[end + 1]) && ((s[end] == c) && (s[end + 1] != c)))
-			str--;
-		end++;
+		
+		i++;
 	}
 	return (ft_substr(s, start, end - start));
 }
@@ -64,13 +55,13 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 
 	i = 0;
-	sz = ft_split_size(s);
+	sz = ft_split_size(s, c);
 	split_s = (char **)malloc((sz + 1) * sizeof(char *));
 	if (!split_s)
 		return (NULL);
 	while (i < sz)
 	{
-		split_s[i] = ft_split_aux(s, c, i + 1);
+		split_s[i] = ft_split_aux(s, c, i);
 		if (!split_s[i])
 		{
 			while (i > 0)
