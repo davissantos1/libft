@@ -50,7 +50,7 @@ BONUS_SRCS = \
 		ft_lstiter.c \
 		ft_lstmap.c
 
-OBJS= $(BONUS_SRCS:.c=.o)
+BONUS_OBJS= $(BONUS_SRCS:.c=.o)
 
 NAME= libft.a
 
@@ -63,12 +63,12 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-bonus: all
-	
+bonus: $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)

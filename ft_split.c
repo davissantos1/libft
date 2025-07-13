@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:38:05 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 16:30:01 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:57:10 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@ static size_t	ft_split_size(char const *s, char c)
 
 	i = 0;
 	count = 0;
+	if (!s || !*s)
+		return (0);
+	if (s[0] != c)
+		count++;
 	while (s[i])
 	{
-		if ((s[i + 1]) && ((s[i] == c) && (s[i + 1] != c)))
+		if (s[i + 1] && s[i] == c && s[i + 1] != c)
 			count++;
 		i++;
 	}
@@ -38,7 +42,7 @@ static char	*ft_split_aux(char const *s, char c, size_t i, size_t sz)
 	str = i;
 	while (str)
 	{
-		if ((s[start + 1]) && ((s[start] == c) && (s[start + 1] != c)))
+		if (s[start + 1] && s[start] == c && s[start + 1] != c)
 			str--;
 		start++;
 	}
@@ -64,11 +68,18 @@ char	**ft_split(char const *s, char c)
 	split_s = (char **)malloc((sz + 1) * sizeof(char *));
 	if (!split_s)
 		return (NULL);
-	split_s[sz] = NULL;
 	while (i < sz)
 	{
-		split_s[i] = ft_split_aux(*s, c, i + 1, sz);
+		split_s[i] = ft_split_aux(s, c, i + 1);
+		if (!split_s[i])
+		{
+			while (i > 0)
+				free(split_s[--i]);	
+			free(split_s);
+			return (NULL);
+		}
 		i++;
 	}
+	split_s[sz] = NULL;
 	return (split_s);
 }
