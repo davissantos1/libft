@@ -1,0 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/13 16:58:33 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/13 17:07:20 by dasimoes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*ptr;
+
+	if (!lst || !new)
+		return ;
+	ptr = ft_lstlast(*lst);
+	if (!ptr)
+	{
+		*lst = new;
+		return ;
+	}
+	ptr->next = new;
+}
