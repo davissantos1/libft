@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 22:51:56 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/10 11:14:22 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 22:19:21 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char	*ft_strrchr(const char *s, int c)
 	int		size;
 
 	size = ft_strlen(s);
-	if ((char)c == '\0')
+	if ((unsigned char)c == '\0')
 		return ((char *) &s[size]);
 	while (size >= 0)
 	{
-		if (s[size] == c)
+		if ((unsigned char) s[size] == (unsigned char)c)
 			return ((char *)&s[size]);
 		size--;
 	}

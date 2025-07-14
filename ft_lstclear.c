@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 17:13:28 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 21:34:33 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 22:23:48 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	*ptr;
 	t_list	*next;
 
-	if (!lst || !del)
+	if (!lst || !del || !*lst)
 		return ;
 	ptr = *lst;
 	while (ptr)
@@ -26,4 +26,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		ft_lstdelone(ptr, del);
 		ptr = next;
 	}
+	*lst = NULL;
 }	

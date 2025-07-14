@@ -6,13 +6,13 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:47:29 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/09 16:23:18 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 21:49:56 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	size;
 

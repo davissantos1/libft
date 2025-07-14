@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:44:02 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 21:37:17 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 23:02:36 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1) - 1;
 	while (end > 0 && ft_isset(s1[end], set))
 		end--;
-	if (end <= start)
+	if (end < start)
 		return (ft_substr(s1, 0, 0));
 	result = ft_substr(s1, start, end - start + 1);
 	if (result == ((void *)0))
