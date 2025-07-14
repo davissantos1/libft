@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:38:05 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 20:57:50 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 21:27:15 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static size_t	ft_split_size(char const *s, char c)
 {
-	size_t i;
-	size_t count;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
 	count = 0;
@@ -42,10 +42,30 @@ static char	*ft_split_aux(char const *s, char c, size_t index)
 	string = 0;
 	while (s[i])
 	{
-		
-		i++;
+		while (s[i] && s[i] == c)
+			i++;
+		if (index == string)
+		{
+			start = i;
+			while (s[i] && s[i] != c)
+				i++;
+			return (ft_substr(s, start, i - start));
+		}
+		string++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
-	return (ft_substr(s, start, end - start));
+	return (NULL);
+}
+
+static void	ft_freemtx(char **matrix, int index)
+{
+	while (index >= 0)
+	{
+		free(matrix[index]);
+		index--;
+	}
+	free(matrix);
 }
 
 char	**ft_split(char const *s, char c)
@@ -54,6 +74,8 @@ char	**ft_split(char const *s, char c)
 	size_t	sz;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	sz = ft_split_size(s, c);
 	split_s = (char **)malloc((sz + 1) * sizeof(char *));
@@ -64,9 +86,7 @@ char	**ft_split(char const *s, char c)
 		split_s[i] = ft_split_aux(s, c, i);
 		if (!split_s[i])
 		{
-			while (i > 0)
-				free(split_s[--i]);	
-			free(split_s);
+			ft_freemtx(split_s, i - 1);
 			return (NULL);
 		}
 		i++;
