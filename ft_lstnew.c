@@ -6,12 +6,11 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:30:20 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 17:06:34 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 21:34:04 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*ft_lstnew(void *content)
 {

@@ -6,12 +6,11 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:45:20 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/10 18:24:05 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 21:33:01 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	*calloc(size_t nmemb, size_t size)
 {

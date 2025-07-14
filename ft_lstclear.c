@@ -6,12 +6,11 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 17:13:28 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 20:18:18 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 21:34:33 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {

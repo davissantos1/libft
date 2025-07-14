@@ -6,12 +6,11 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:44:02 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/12 15:36:50 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/13 21:37:17 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static	int	ft_isset(char c, char const *set)
 {
