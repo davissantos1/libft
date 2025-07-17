@@ -38,8 +38,6 @@ SRCS= \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c 
 
-OBJS= $(SRCS:.c=.o)
-
 BONUS_SRCS = \
 		ft_lstnew_bonus.c \
 		ft_lstadd_front_bonus.c \
@@ -53,7 +51,13 @@ BONUS_SRCS = \
 
 BONUS_OBJS= $(BONUS_SRCS:.c=.o)
 
+OBJS= $(SRCS:.c=.o)
+
 NAME= libft.a
+
+ifeq ($(findstring bonus,$(MAKECMDGOALS)),bonus)
+	OBJS+=	$(BONUS_OBJS)
+endif
 
 all: $(NAME)
 
@@ -71,5 +75,4 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus: $(NAME)
