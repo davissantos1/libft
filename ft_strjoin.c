@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:32:53 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 21:37:33 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/18 21:10:20 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
 	size_t	total_size;
-	size_t	i;
 
-	i = 0;
 	total_size = ft_strlen(s1) + ft_strlen(s2) + 1;
 	result = (char *)malloc(total_size * sizeof(char));
 	if (result == ((void *)0))
