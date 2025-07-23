@@ -6,11 +6,9 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:31:07 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/21 17:18:18 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/22 20:16:45 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {

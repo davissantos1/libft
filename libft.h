@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:42:33 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 21:32:57 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/22 23:11:32 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define LIBFT_H
 
 // External includes
-# include <string.h>
-# include <unistd.h>
 # include <stdlib.h>
 
 // Structs

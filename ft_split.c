@@ -6,12 +6,11 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:38:05 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 21:29:23 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:20:52 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static size_t	ft_split_size(char const *s, char c)
 {

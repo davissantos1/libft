@@ -6,11 +6,11 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:38:08 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 14:38:17 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:10:26 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	ft_putendl_fd(char *s, int fd)
 {

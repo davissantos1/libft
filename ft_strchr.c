@@ -6,11 +6,9 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 22:51:56 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/13 22:18:32 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:22:43 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
