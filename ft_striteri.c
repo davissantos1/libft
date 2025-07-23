@@ -6,9 +6,11 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:36:55 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/22 21:42:40 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/07/23 12:41:52 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
