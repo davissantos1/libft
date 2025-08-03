@@ -33,8 +33,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 
 	start = 0;
-	if (!s1 || !set)
-		return ((void *)0);
+	if (!s1 && !set)
+		return (NULL);
 	while (s1[start] && ft_isset(s1[start], set))
 		start++;
 	end = ft_strlen(s1) - 1;
@@ -43,7 +43,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (end < start)
 		return (ft_substr(s1, 0, 0));
 	result = ft_substr(s1, start, end - start + 1);
-	if (result == ((void *)0))
-		return ((void *)0);
+	if (result == NULL)
+		return (NULL);
 	return (result);
 }

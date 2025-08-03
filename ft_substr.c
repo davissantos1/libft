@@ -27,8 +27,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	sub_size;
 
 	i = 0;
-	if (!s)
-		return (NULL);
 	sub_size = ft_substr_aux(s, start, len);
 	if (start >= ft_strlen(s))
 	{
