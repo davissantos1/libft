@@ -1,6 +1,6 @@
 CC= cc
 
-CFLAGS= -Wall -Wextra -Wpedantic -Wnull-dereference -Wcast-align -I.
+CFLAGS= -Wall -Wextra -Werror -Wpedantic -Wnull-dereference -Wcast-align -I.
 
 SRCS= \
 	ft_isalpha.c \
