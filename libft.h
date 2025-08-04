@@ -16,13 +16,46 @@
 // External includes
 # include <stdlib.h>
 
+// Enums
+typedef enum	e_gc_tag
+{
+				GC_DEFAULT,		// Memória de uso geral
+				GC_TEMP, 		// Memória de uso temporário
+				GC_PERSISTENT,	// Memória persistente (still reachable)
+				GC_SESSION,		// Memória de sessão
+				GC_CUSTOM1,		// Tag customizável
+				GC_CUSTOM2,		// Tag customizável
+				GC_CUSTOM3,		// Tag customizável
+				GC_CUSTOM4,		// Tag customizável
+				GC_CUSTOM5,		// Tag customizável
+				GC_COUNT		// Total de tags
+}				t_gc_tag;
+
 // Structs
-typedef struct s_list
+typedef struct		s_list
 {
 	void			*content;
 	struct s_list	*next;
-}	t_list;
+}					t_list;
 
+typedef struct		s_btree
+{
+	struct s_btree	*right;
+	struct s_btree	*left;
+	void			*item;
+}					t_btree;
+
+typedef struct			s_gc_node
+{
+	void				*ptr;
+	struct s_gc_node	*next;
+}						t_gc_node;
+
+typedef struct	s_gc
+{
+	t_gc_node	*lists[GC_COUNT];
+}				t_gc;		
+	
 // Part 1 - Libc Functions
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -101,5 +134,14 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		__attribute__((nonnull(1, 2)));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		__attribute__((nonnull(1, 2, 3)));
+
+// Part 4 - Bonus Functions (b-trees)
+t_btree	*btree_create_node(void *item);
+void	btree_apply_infix(t_btree *root, void (*applyf)(void *))
+		__attribute__((nonnull(1, 2)));
+void	btree_apply_prefix(t_btree *root, void (*applyf)(void *))
+		__attribute__((nonnull(1, 2)));
+void	btree_apply_suffix(t_btree *root, void (*applyf)(void *))
+		__attribute__((nonnull(1, 2)));
 
 #endif

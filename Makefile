@@ -49,6 +49,14 @@ BONUS_SRCS = \
 		ft_lstiter_bonus.c \
 		ft_lstmap_bonus.c
 
+EXTRA_SRCS = \
+		btree_create_node.c \
+		btree_apply_prefix.c \
+		btree_apply_infix.c \
+		btree_apply_suffix.c
+
+EXTRA_OBJS = $(EXTRA_SRCS:.c=.o)
+
 BONUS_OBJS= $(BONUS_SRCS:.c=.o)
 
 OBJS= $(SRCS:.c=.o)
@@ -56,7 +64,7 @@ OBJS= $(SRCS:.c=.o)
 NAME= libft.a
 
 ifeq ($(findstring bonus,$(MAKECMDGOALS)),bonus)
-	OBJS+=	$(BONUS_OBJS)
+	OBJS+=	$(BONUS_OBJS) $(EXTRA_OBJS)
 endif
 
 all: $(NAME)
@@ -76,3 +84,5 @@ fclean: clean
 re: fclean all
 
 bonus: $(NAME)
+
+.PHONY: all fclean clean re bonus
