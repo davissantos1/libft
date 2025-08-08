@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:50:23 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/22 20:30:29 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/08 20:02:05 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	count;
+	int		count;
+	t_list	*head;
 
+	head = lst;
 	count = 0;
-	while (lst)
+	while (head)
 	{
-		lst = lst->next;
+		head = lst->next;
 		count++;
 	}
 	return (count);

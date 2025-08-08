@@ -50,6 +50,8 @@ BONUS_SRCS = \
 		ft_lstmap_bonus.c
 
 EXTRA_SRCS = \
+		gc_manage.c \
+		gc_malloc.c \
 		btree_create_node.c \
 		btree_apply_prefix.c \
 		btree_apply_infix.c \
@@ -76,7 +78,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS) $(EXTRA_OBJS)
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 17:31:35 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/07/22 20:22:56 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/08 20:01:23 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (lst)
+	t_list	*head;
+
+	head = lst;
+	while (head)
 	{
 		f(lst->content);
-		lst = lst->next;
+		head = lst->next;
 	}
 }
