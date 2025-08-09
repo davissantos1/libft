@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:53:02 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/08 20:00:38 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/08 21:12:14 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	gc_free_tag(t_gc_tag tag)
 	{
 		tmp = g_gc->lists[tag]->next;
 		free(g_gc->lists[tag]->ptr);
+		g_gc->lists[tag]->ptr = NULL;
 		free(g_gc->lists[tag]);
 		g_gc->lists[tag] = tmp;
 	}
