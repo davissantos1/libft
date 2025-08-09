@@ -6,13 +6,11 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:53:02 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/08 21:12:14 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/09 14:27:41 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static t_gc	*g_gc = NULL;
 
 void	*ft_free(void *ptr)
 {
@@ -38,38 +36,30 @@ t_gc	*gc_init(void)
 	return (gc);
 }
 
-t_gc	*gc_get(void)
-{
-	if (!g_gc)
-		g_gc = gc_init();
-	return (g_gc);
-}
-
-void	gc_free_tag(t_gc_tag tag)
+void	gc_free_tag(t_gc *gc, t_gc_tag tag)
 {
 	t_gc_node	*tmp;
 
-	if (!g_gc || tag >= GC_COUNT)
+	if (!gc || tag >= GC_COUNT)
 		return ;
-	while (g_gc->lists[tag])
+	while (gc->lists[tag])
 	{
-		tmp = g_gc->lists[tag]->next;
-		free(g_gc->lists[tag]->ptr);
-		g_gc->lists[tag]->ptr = NULL;
-		free(g_gc->lists[tag]);
-		g_gc->lists[tag] = tmp;
+		tmp = gc->lists[tag]->next;
+		free(gc->lists[tag]->ptr);
+		free(gc->lists[tag]);
+		gc->lists[tag] = tmp;
 	}
 }
 
-void	gc_free_all(void)
+void	gc_free_all(t_gc **gc)
 {
 	int			i;
 
 	i = 0;
-	if (!g_gc)
+	if (!gc || !*gc)
 		return ;
 	while (i < GC_COUNT)
-		gc_free_tag(i++);
-	free(g_gc);
-	g_gc = NULL;
+		gc_free_tag(*gc, i++);
+	free(*gc);
+	*gc = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 16:15:55 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/08 19:59:29 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/09 14:27:42 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,27 @@ t_gc_node	*gc_create_node(void *p)
 	return (node);
 }
 
-void	*gc_malloc(size_t size, t_gc_tag tag)
+void	*gc_malloc(t_gc *gc, size_t size, t_gc_tag tag)
 {
 	t_gc_node	*node;
-	t_gc_node	*head;
-	t_gc		*gc;
 	void		*p;
 
 	if (size == 0 || tag >= GC_COUNT)
 		return (NULL);
-	gc = gc_get();
 	if (!gc)
 		return (NULL);
-	head = gc->lists[tag];
 	p = malloc(size);
 	if (!p)
 		return (NULL);
 	node = gc_create_node(p);
 	if (!node)
 		return (ft_free(p));
-	if (!head)
-	{
+	if (!gc->lists[tag])
 		gc->lists[tag] = node;
-		return (p);
+	else
+	{
+		node->next = gc->lists[tag];
+		gc->lists[tag] = node;
 	}
-	node->next = head;
-	gc->lists[tag] = node;
 	return (p);
 }
