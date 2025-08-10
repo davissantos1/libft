@@ -6,18 +6,21 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:53:02 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/09 16:23:27 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/10 14:49:06 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_free(void **ptr)
+void	*ft_free(void *ptr)
 {
-	if (ptr && *ptr)
+	void	**p;
+
+	p = (void **)ptr;
+	if (p && *p)
 	{
-		free(*ptr);
-		*ptr = NULL;
+		free(*p);
+		*p = NULL;
 	}
 	return (NULL);
 }
