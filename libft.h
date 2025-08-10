@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:42:33 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/09 14:32:41 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/10 14:12:31 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 // External includes
 # include <stdlib.h>
+
+// Macros
+# define INT_MAX 2147483647
+# define INT_MAX -2147483648
 
 // Enums
 typedef enum e_gc_tag
