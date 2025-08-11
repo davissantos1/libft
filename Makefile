@@ -50,6 +50,7 @@ BONUS_SRCS = \
 		ft_lstmap_bonus.c
 
 EXTRA_SRCS = \
+		ft_atol.c \
 		gc_manage.c \
 		gc_malloc.c \
 		btree_create_node.c \

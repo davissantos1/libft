@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:42:33 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/10 14:47:29 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/10 21:37:25 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 // Macros
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
+# define LONG_MAX 9223372036854775807
+# define LONG_MIN -9223372036854775808
 
 // Enums
 typedef enum e_gc_tag
@@ -149,13 +151,16 @@ void		btree_apply_prefix(t_btree *root, void (*applyf)(void *))
 void		btree_apply_suffix(t_btree *root, void (*applyf)(void *))
 			__attribute__((nonnull(1, 2)));
 
-// Part 5 - Personal contributions
+// Part 5 - Garbage Collector Functions
 t_gc_node	*gc_create_node(void *p);
 void		*gc_malloc(t_gc *gc, size_t size, t_gc_tag tag);
-void		*ft_free(void *ptr);
 t_gc		*gc_init(void);
 t_gc		*gc_get(void);
 void		gc_free_tag(t_gc *gc, t_gc_tag tag);
 void		gc_free_all(t_gc **gc);
+
+// Part 6 - Extra Cool Functions
+void		*ft_free(void *ptr);
+long		ft_atol(const char *nbr);
 
 #endif
