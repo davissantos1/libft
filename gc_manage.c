@@ -6,23 +6,27 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:53:02 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/10 14:49:06 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/11 19:40:39 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_free(void *ptr)
+void	*gc_addptr(void *ptr, t_gc *gc, t_gc_tag tag)
 {
-	void	**p;
+	t_gc_node	*node;
 
-	p = (void **)ptr;
-	if (p && *p)
+	node = gc_create_node(ptr);
+	if (!node)
+		return (NULL);
+	if (!gc->lists[tag])
+		gc->lists[tag] = node;
+	else
 	{
-		free(*p);
-		*p = NULL;
+		node->next = gc->lists[tag];
+		gc->lists[tag] = node;
 	}
-	return (NULL);
+	return (ptr);
 }
 
 t_gc	*gc_init(void)
