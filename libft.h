@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:42:33 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/10 21:37:25 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/11 17:44:56 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ t_gc		*gc_init(void);
 t_gc		*gc_get(void);
 void		gc_free_tag(t_gc *gc, t_gc_tag tag);
 void		gc_free_all(t_gc **gc);
+void		*gc_addptr(void *ptr, t_gc *gc, t_gc_tag tag);
 
 // Part 6 - Extra Cool Functions
 void		*ft_free(void *ptr);

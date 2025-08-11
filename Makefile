@@ -51,6 +51,7 @@ BONUS_SRCS = \
 
 EXTRA_SRCS = \
 		ft_atol.c \
+		ft_free.c \
 		gc_manage.c \
 		gc_malloc.c \
 		btree_create_node.c \
