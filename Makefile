@@ -50,7 +50,12 @@ BONUS_SRCS = \
 		ft_lstmap_bonus.c
 
 EXTRA_SRCS = \
+		ft_mtxdup.c \
+		ft_mtxlen.c \
+		ft_mtxjoin.c \
+		ft_mtxfree.c \
 		ft_atol.c \
+		ft_memdup.c \
 		ft_free.c \
 		gc_manage.c \
 		gc_malloc.c \

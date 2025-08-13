@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:42:33 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/11 17:44:56 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/12 21:36:29 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,5 +163,10 @@ void		*gc_addptr(void *ptr, t_gc *gc, t_gc_tag tag);
 // Part 6 - Extra Cool Functions
 void		*ft_free(void *ptr);
 long		ft_atol(const char *nbr);
+void		*ft_mtxfree(char **mtx);
+char		**ft_mtxjoin(char **mtx1, char **mtx2);
+void		*ft_memdup(const void *src, size_t n);
+size_t		ft_mtxlen(char **mtx);
+char		**ft_mtxdup(char **mtx);
 
 #endif
