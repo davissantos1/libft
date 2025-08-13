@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 21:20:59 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/12 21:36:04 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/12 22:07:30 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	**ft_mtxdup(char **mtx)
 {
 	int		i;
 	int		size;
-	char 	**mtx_dup;
+	char	**mtx_dup;
 
 	i = -1;
 	size = ft_mtxlen(mtx);

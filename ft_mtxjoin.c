@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 17:10:43 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/12 21:48:43 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/12 22:06:42 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char	**ft_mtxjoin_aux(char **mtx, char **mtx1, char **mtx2)
 {
 	int		i;
 	int		j;
-	
+
 	i = -1;
 	j = -1;
 	while (mtx1[++i])
@@ -39,7 +39,7 @@ char	**ft_mtxjoin(char **mtx1, char **mtx2)
 {
 	char	**mtx;
 	int		size;
-	
+
 	size = ft_mtxlen(mtx1) + ft_mtxlen(mtx2);
 	if (!*mtx1)
 		return (ft_mtxdup(mtx2));
