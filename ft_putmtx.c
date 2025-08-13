@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putmtx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/13 14:37:36 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/13 13:42:58 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/08/13 13:41:22 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/13 13:46:22 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putmtx_fd(char **mtx, int fd)
 {
-	size_t	i;
+	int	i;
 
-	i = 0;
-	while (s[i])
+	i = -1;
+	while (mtx[++i])
 	{
-		write(fd, &s[i], 1);
-		i++;
+		ft_putstr_fd(mtx[i], fd);
+		ft_putchar_fd('\n', fd);
 	}
 }
