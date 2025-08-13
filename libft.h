@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:42:33 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/12 21:36:29 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:50:47 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,5 +168,6 @@ char		**ft_mtxjoin(char **mtx1, char **mtx2);
 void		*ft_memdup(const void *src, size_t n);
 size_t		ft_mtxlen(char **mtx);
 char		**ft_mtxdup(char **mtx);
+void		ft_putmtx_fd(char **mtx, int fd);
 
 #endif

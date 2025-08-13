@@ -50,6 +50,7 @@ BONUS_SRCS = \
 		ft_lstmap_bonus.c
 
 EXTRA_SRCS = \
+		ft_putmtx_fd.c \
 		ft_mtxdup.c \
 		ft_mtxlen.c \
 		ft_mtxjoin.c \
