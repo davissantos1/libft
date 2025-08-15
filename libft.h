@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:42:33 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/13 13:50:47 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:32:19 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,12 +153,18 @@ void		btree_apply_suffix(t_btree *root, void (*applyf)(void *))
 
 // Part 5 - Garbage Collector Functions
 t_gc_node	*gc_create_node(void *p);
-void		*gc_malloc(t_gc *gc, size_t size, t_gc_tag tag);
+void		*gc_malloc(size_t size, t_gc *gc, t_gc_tag tag);
+void		*gc_calloc(size_t size, t_gc *gc, t_gc_tag tag);
 t_gc		*gc_init(void);
-t_gc		*gc_get(void);
 void		gc_free_tag(t_gc *gc, t_gc_tag tag);
 void		gc_free_all(t_gc **gc);
-void		*gc_addptr(void *ptr, t_gc *gc, t_gc_tag tag);
+void		*gc_addptr(void *p, t_gc *gc, t_gc_tag tag);
+void		*gc_addmtx(void *mtx, t_gc *gc, t_gc_tag tag);
+void		*gc_addlst(void *head, t_gc *gc, t_gc_tag tag);
+void		*gc_addbtree(void *root, t_gc *gc, t_gc_tag tag);
+void		gc_delptr(void *p, t_gc *gc, t_gc_tag tag);
+void		*gc_findptr(void *p, t_gc *gc);
+void		*gc_findptr_tag(void *p, t_gc *gc, t_gc_tag tag);
 
 // Part 6 - Extra Cool Functions
 void		*ft_free(void *ptr);

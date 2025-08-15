@@ -58,6 +58,8 @@ EXTRA_SRCS = \
 		ft_atol.c \
 		ft_memdup.c \
 		ft_free.c \
+		gc_free.c \
+		gc_add.c \
 		gc_manage.c \
 		gc_malloc.c \
 		btree_create_node.c \

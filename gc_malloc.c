@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 16:15:55 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/09 16:23:27 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:12:57 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,24 @@ t_gc_node	*gc_create_node(void *p)
 	return (node);
 }
 
-void	*gc_malloc(t_gc *gc, size_t size, t_gc_tag tag)
+t_gc	*gc_init(void)
+{
+	t_gc	*gc;
+	int		i;
+
+	i = 0;
+	gc = malloc(sizeof(t_gc));
+	if (!gc)
+		return (NULL);
+	while (i < GC_COUNT)
+	{
+		gc->lists[i] = NULL;
+		i++;
+	}
+	return (gc);
+}
+
+void	*gc_malloc(size_t size, t_gc *gc, t_gc_tag tag)
 {
 	t_gc_node	*node;
 	void		*p;
@@ -34,6 +51,31 @@ void	*gc_malloc(t_gc *gc, size_t size, t_gc_tag tag)
 	if (!gc)
 		return (NULL);
 	p = malloc(size);
+	if (!p)
+		return (NULL);
+	node = gc_create_node(p);
+	if (!node)
+		return (ft_free(&p));
+	if (!gc->lists[tag])
+		gc->lists[tag] = node;
+	else
+	{
+		node->next = gc->lists[tag];
+		gc->lists[tag] = node;
+	}
+	return (p);
+}
+
+void	*gc_calloc(size_t size, t_gc *gc, t_gc_tag tag)
+{
+	t_gc_node	*node;
+	void		*p;
+
+	if (size == 0 || tag >= GC_COUNT)
+		return (NULL);
+	if (!gc)
+		return (NULL);
+	p = ft_calloc(size);
 	if (!p)
 		return (NULL);
 	node = gc_create_node(p);

@@ -6,70 +6,58 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:53:02 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/11 19:40:39 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/14 19:53:22 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*gc_addptr(void *ptr, t_gc *gc, t_gc_tag tag)
+void	*gc_findptr_tag(void *ptr, t_gc *gc, t_gc_tag tag)
 {
-	t_gc_node	*node;
+	t_gc_node	*head;
 
-	node = gc_create_node(ptr);
-	if (!node)
-		return (NULL);
-	if (!gc->lists[tag])
-		gc->lists[tag] = node;
-	else
+	head = gc->lists[tag];
+	while (head)
 	{
-		node->next = gc->lists[tag];
-		gc->lists[tag] = node;
+		if (head->ptr == ptr)
+			return (head->ptr);
+		head = head->next;
 	}
-	return (ptr);
+	return (NULL);
 }
 
-t_gc	*gc_init(void)
+void	*gc_findptr(void *ptr, t_gc *gc)
 {
-	t_gc	*gc;
-	int		i;
+	t_gc_node	*head;
+	size_t		index;
 
-	i = 0;
-	gc = malloc(sizeof(t_gc));
-	if (!gc)
-		return (NULL);
-	while (i < GC_COUNT)
+	index = 0;
+	head = gc->lists[index];
+	while (index < GC_COUNT)
 	{
-		gc->lists[i] = NULL;
-		i++;
+		head = gc_findptr_tag(ptr, gc, index);
+		if (head)
+			return (head);
+		index++;
 	}
-	return (gc);
+	return (NULL);
 }
 
-void	gc_free_tag(t_gc *gc, t_gc_tag tag)
+void	gc_delptr(void *ptr, t_gc *gc, t_gc_tag tag)
 {
-	t_gc_node	*tmp;
+	t_gc_node	*temp;
+	t_gc_node	*head;
 
-	if (!gc || tag >= GC_COUNT)
-		return ;
-	while (gc->lists[tag])
+	if (!gc_findptr(ptr, gc))
+		return;
+	head = gc->lists[tag];
+	while (head->ptr != ptr)
 	{
-		tmp = gc->lists[tag]->next;
-		ft_free(&gc->lists[tag]->ptr);
-		ft_free(&gc->lists[tag]);
-		gc->lists[tag] = tmp;
+		if ((head->next)->ptr == ptr)
+			temp = head;	
+		head = head->next;
 	}
-}
-
-void	gc_free_all(t_gc **gc)
-{
-	int			i;
-
-	i = 0;
-	if (!gc || !*gc)
-		return ;
-	while (i < GC_COUNT)
-		gc_free_tag(*gc, i++);
-	ft_free(gc);
-	*gc = NULL;
+	temp->next = head->next;
+	ft_free(&head->ptr);
+	ft_free(&head);
 }
