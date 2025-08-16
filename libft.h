@@ -161,7 +161,7 @@ void		*gc_malloc(size_t size, t_gc *gc, t_gc_tag tag)
 void		*gc_calloc(size_t size, t_gc *gc, t_gc_tag tag)
 			__attribute__((nonnull(2)));
 void		*gc_addptr(void *p, t_gc *gc, t_gc_tag tag)
-			__attribute__((nonnull(1, 2)));
+			__attribute__((nonnull(2)));
 void		*gc_addmtx(void *mtx, t_gc *gc, t_gc_tag tag)
 			__attribute__((nonnull(1, 2)));
 void		*gc_addlst(void *head, t_gc *gc, t_gc_tag tag)

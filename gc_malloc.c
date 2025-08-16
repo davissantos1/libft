@@ -48,8 +48,6 @@ void	*gc_malloc(size_t size, t_gc *gc, t_gc_tag tag)
 
 	if (size == 0 || tag >= GC_COUNT)
 		return (NULL);
-	if (!gc)
-		return (NULL);
 	p = malloc(size);
 	if (!p)
 		return (NULL);
@@ -73,9 +71,7 @@ void	*gc_calloc(size_t size, t_gc *gc, t_gc_tag tag)
 
 	if (size == 0 || tag >= GC_COUNT)
 		return (NULL);
-	if (!gc)
-		return (NULL);
-	p = ft_calloc(size);
+	p = ft_calloc(size, 1);
 	if (!p)
 		return (NULL);
 	node = gc_create_node(p);
