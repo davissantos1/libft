@@ -16,9 +16,9 @@ void	*gc_addptr(void *p, t_gc *gc, t_gc_tag tag)
 {
 	t_gc_node	*node;
 
-	if (gc_findptr(p, gc))
+	if (!p || gc_findptr(p, gc))
 		return (p);
-	node = gc_create_node(ptr);
+	node = gc_create_node(p);
 	if (!node)
 		return (NULL);
 	if (!gc->lists[tag])
@@ -33,7 +33,7 @@ void	*gc_addptr(void *p, t_gc *gc, t_gc_tag tag)
 
 void	*gc_addmtx(void *mtx, t_gc *gc, t_gc_tag tag)
 {
-	char 	**matrix;
+	char	**matrix;
 	void	*temp;
 	int		index;
 
@@ -44,10 +44,10 @@ void	*gc_addmtx(void *mtx, t_gc *gc, t_gc_tag tag)
 		temp = gc_addptr(matrix[index], gc, tag);
 		if (!temp)
 		{
-			while (matrix[index] && index > 0)
+			while (index > 0)
 			{
-				gc_delptr(matrix[index], gc, tag);
 				index--;
+				gc_delptr(matrix[index], gc, tag);
 			}
 			return (NULL);
 		}
@@ -56,36 +56,57 @@ void	*gc_addmtx(void *mtx, t_gc *gc, t_gc_tag tag)
 	return (mtx);
 }
 
-void		*gc_addlst(void *head, t_gc *gc, t_gc_tag tag)
+void	*gc_addlst(void *head, t_gc *gc, t_gc_tag tag)
 {
-	t_list		*list;
-	t_list		*temp;
-	void		*added;
+	t_list	*list;
+	int		index;		
 
 	list = (t_list *)head;
-	temp = (t_list *)head;
+	index = 0;
 	while (list)
 	{
-		added = gc_addptr(list, gc, tag);
-		if (!added)
+		if (!gc_addptr(list, gc, tag))
 		{
-			ft_lstclear(&temp, free);
+			gc_dellst(head, index, gc, tag);
 			return (NULL);
 		}
+		if (list->content)
+		{
+			if (!gc_addptr(list->content, gc, tag))
+			{
+				gc_dellst(head, index + 1, gc, tag);
+				return (NULL);
+			}
+		}
 		list = list->next;
+		index++;
 	}
 	return (head);
 }
 
-void		*gc_addbtree(void *root, t_gc *gc, t_gc_tag tag);
+void	*gc_addbtree(void *root, t_gc *gc, t_gc_tag tag)
 {
-	void	*temp;
+	t_btree	*node;
 
-	if (!root)
+	node = (t_btree *)root;
+	if (!node)
 		return (NULL);
-	temp = gc_addptr(root, gc, tag);
-	temp = gc_addptr(root->item, gc, tag);
-	gc_addbtree(root->left, gc, tag);
-	gc_addbtree(root->right, gc, tag);
+	if (!gc_addptr(node, gc, tag))
+		return (NULL);
+	if (node->item)
+	{
+		if (!gc_addptr(node->item, gc, tag))
+			return (gc_delbtree(root, gc, tag), NULL);
+	}
+	if (node->left)
+	{
+		if (!gc_addbtree(node->left, gc, tag))
+			return (gc_delbtree(root, gc, tag), NULL);
+	}
+	if (node->right)
+	{
+		if (!gc_addbtree(node->right, gc, tag))
+			return (gc_delbtree(root, gc, tag), NULL);
+	}
 	return (root);
 }

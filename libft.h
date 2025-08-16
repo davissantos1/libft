@@ -153,27 +153,46 @@ void		btree_apply_suffix(t_btree *root, void (*applyf)(void *))
 
 // Part 5 - Garbage Collector Functions
 t_gc_node	*gc_create_node(void *p);
-void		*gc_malloc(size_t size, t_gc *gc, t_gc_tag tag);
-void		*gc_calloc(size_t size, t_gc *gc, t_gc_tag tag);
 t_gc		*gc_init(void);
-void		gc_free_tag(t_gc *gc, t_gc_tag tag);
 void		gc_free_all(t_gc **gc);
-void		*gc_addptr(void *p, t_gc *gc, t_gc_tag tag);
-void		*gc_addmtx(void *mtx, t_gc *gc, t_gc_tag tag);
-void		*gc_addlst(void *head, t_gc *gc, t_gc_tag tag);
-void		*gc_addbtree(void *root, t_gc *gc, t_gc_tag tag);
-void		gc_delptr(void *p, t_gc *gc, t_gc_tag tag);
-void		*gc_findptr(void *p, t_gc *gc);
-void		*gc_findptr_tag(void *p, t_gc *gc, t_gc_tag tag);
+void		gc_free_tag(t_gc *gc, t_gc_tag tag);
+void		*gc_malloc(size_t size, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(2)));
+void		*gc_calloc(size_t size, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(2)));
+void		*gc_addptr(void *p, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(1, 2)));
+void		*gc_addmtx(void *mtx, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(1, 2)));
+void		*gc_addlst(void *head, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(1, 2)));
+void		*gc_addbtree(void *root, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(1, 2)));
+void		gc_delptr(void *p, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(1, 2)));
+void		*gc_findptr(void *p, t_gc *gc)
+			__attribute__((nonnull(1, 2)));
+void		*gc_findptr_tag(void *p, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(1, 2)));
+void		gc_dellst(void *head, int index, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(1, 3)));
+void		gc_delbtree(void *root, t_gc *gc, t_gc_tag tag)
+			__attribute__((nonnull(1, 2)));
 
 // Part 6 - Extra Cool Functions
 void		*ft_free(void *ptr);
-long		ft_atol(const char *nbr);
+long		ft_atol(const char *nbr)
+			__attribute__((nonnull));
 void		*ft_mtxfree(char **mtx);
-char		**ft_mtxjoin(char **mtx1, char **mtx2);
-void		*ft_memdup(const void *src, size_t n);
-size_t		ft_mtxlen(char **mtx);
-char		**ft_mtxdup(char **mtx);
-void		ft_putmtx_fd(char **mtx, int fd);
+char		**ft_mtxjoin(char **mtx1, char **mtx2)
+			__attribute__((nonnull(1, 2)));
+void		*ft_memdup(const void *src, size_t n)
+			__attribute__((nonnull(1)));
+size_t		ft_mtxlen(char **mtx)
+			__attribute__((nonnull));
+char		**ft_mtxdup(char **mtx)
+			__attribute__((nonnull));
+void		ft_putmtx_fd(char **mtx, int fd)
+			__attribute__((nonnull(1)));
 
 #endif

@@ -37,6 +37,4 @@ void	gc_free_all(t_gc **gc)
 	while (i < GC_COUNT)
 		gc_free_tag(*gc, i++);
 	ft_free(gc);
-	*gc = NULL;
 }
-
