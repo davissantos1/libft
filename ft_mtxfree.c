@@ -16,9 +16,12 @@ void	*ft_mtxfree(char **mtx)
 {
 	int	i;
 
-	i = -1;
-	while (mtx && mtx[++i])
-		ft_free(&mtx[i]);
-	free(mtx);
+	if (mtx)
+	{
+		i = -1;
+		while (mtx[++i])
+			mtx[i] = ft_free(mtx[i]);
+		free(mtx);
+	}
 	return (NULL);
 }

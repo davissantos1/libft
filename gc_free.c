@@ -12,29 +12,34 @@
 
 #include "libft.h"
 
-void	gc_free_tag(t_gc *gc, t_gc_tag tag)
+void	*gc_free_tag(t_gc *gc, t_gc_tag tag)
 {
 	t_gc_node	*tmp;
+	t_gc_node	*current;
 
 	if (!gc || tag >= GC_COUNT)
-		return ;
-	while (gc->lists[tag])
+		return (NULL);
+	current = gc->lists[tag];
+	while (current)
 	{
-		tmp = gc->lists[tag]->next;
-		ft_free(&gc->lists[tag]->ptr);
-		ft_free(&gc->lists[tag]);
-		gc->lists[tag] = tmp;
+		tmp = current->next;
+		ft_free(current->ptr);
+		ft_free(current);
+		current = tmp;
 	}
+	gc->lists[tag] = NULL;
+	return (NULL);
 }
 
-void	gc_free_all(t_gc **gc)
+void	*gc_free_all(t_gc **gc)
 {
 	int			i;
 
 	i = 0;
 	if (!gc || !*gc)
-		return ;
+		return (NULL);
 	while (i < GC_COUNT)
 		gc_free_tag(*gc, i++);
-	ft_free(gc);
+	*gc = ft_free(*gc);
+	return (NULL);
 }

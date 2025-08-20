@@ -14,13 +14,7 @@
 
 void	*ft_free(void *ptr)
 {
-	void	**p;
-
-	p = (void **)ptr;
-	if (p && *p)
-	{
-		free(*p);
-		*p = NULL;
-	}
+	if (ptr)
+		free(ptr);
 	return (NULL);
 }

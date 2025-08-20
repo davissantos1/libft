@@ -53,7 +53,7 @@ void	*gc_malloc(size_t size, t_gc *gc, t_gc_tag tag)
 		return (NULL);
 	node = gc_create_node(p);
 	if (!node)
-		return (ft_free(&p));
+		return (ft_free(p));
 	if (!gc->lists[tag])
 		gc->lists[tag] = node;
 	else
@@ -76,7 +76,7 @@ void	*gc_calloc(size_t size, t_gc *gc, t_gc_tag tag)
 		return (NULL);
 	node = gc_create_node(p);
 	if (!node)
-		return (ft_free(&p));
+		return (ft_free(p));
 	if (!gc->lists[tag])
 		gc->lists[tag] = node;
 	else
