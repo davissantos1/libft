@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gc_free.c                                          :+:      :+:    :+:   */
+/*   ft_bubble_sort_int.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 15:38:24 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/13 15:39:45 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/08/20 21:35:23 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/20 21:49:27 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*gc_free_tag(t_gc *gc, t_gc_tag tag)
+static void	ft_swap_int(int *a, int *b)
 {
-	t_gc_node	*tmp;
-	t_gc_node	*current;
+	int	tmp;
 
-	if (!gc || tag >= GC_COUNT)
-		return (NULL);
-	current = gc->lists[tag];
-	while (current)
-	{
-		tmp = current->next;
-		ft_free(current->ptr);
-		ft_free(current);
-		current = tmp;
-	}
-	gc->lists[tag] = NULL;
-	return (NULL);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-void	*gc_free_all(t_gc *gc)
+int	*ft_bubble_sort_int(int	*arr, int size)
 {
-	int			i;
+	int	i;
+	int	j;
 
 	i = 0;
-	if (!gc)
-		return (NULL);
-	while (i < GC_COUNT)
-		gc_free_tag(gc, i++);
-	ft_free(gc);
-	return (NULL);
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] > arr[j])
+				ft_swap_int(&arr[i], &arr[j]);
+			j++;
+		}
+		i++;
+	}
+	return (arr);
 }

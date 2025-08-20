@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:42:33 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/15 17:32:19 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/20 21:52:02 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,8 +154,8 @@ void		btree_apply_suffix(t_btree *root, void (*applyf)(void *))
 // Part 5 - Garbage Collector Functions
 t_gc_node	*gc_create_node(void *p);
 t_gc		*gc_init(void);
-void		gc_free_all(t_gc **gc);
-void		gc_free_tag(t_gc *gc, t_gc_tag tag);
+void		*gc_free_all(t_gc *gc);
+void		*gc_free_tag(t_gc *gc, t_gc_tag tag);
 void		*gc_malloc(size_t size, t_gc *gc, t_gc_tag tag)
 			__attribute__((nonnull(2)));
 void		*gc_calloc(size_t size, t_gc *gc, t_gc_tag tag)
@@ -193,6 +193,8 @@ size_t		ft_mtxlen(char **mtx)
 char		**ft_mtxdup(char **mtx)
 			__attribute__((nonnull));
 void		ft_putmtx_fd(char **mtx, int fd)
+			__attribute__((nonnull(1)));
+int			*ft_bubble_sort_int(int	*arr, int size)
 			__attribute__((nonnull(1)));
 
 #endif
